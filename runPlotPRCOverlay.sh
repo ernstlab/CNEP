@@ -1,0 +1,9 @@
+#!/bin/bash
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCPi/PRC_pi_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/Pi_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCOmega/PRC_omega_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/Omega_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCPhastCons/PRC_phastCons_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PhastCons_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCGERP/PRC_GERP_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/GERP_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCCNEPAVGPi/PRC_CNEPAVGPi_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/CNEPAVG_Pi_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCCNEPAVGOmega/PRC_CNEPAVGOmega_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/CNEPAVG_Omega_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCCNEPAVGPhastCons/PRC_CNEPAVGPhastCons_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/CNEPAVG_PhastCons_labels_scores/labels_scores_chr       
+python ./plot_PRC_Overlay.py /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/PRCCNEPAVGGERP/PRC_CNEPAVGGERP_overlay /u/project/ernst/ogrujic/zarlab/scorePredictionsAllBP/CNEPAVG_GERP_labels_scores/labels_scores_chr
