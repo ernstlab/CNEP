@@ -16,11 +16,11 @@ public class CombineFiles
 	String szdescription = args[5];
 	*/
 
-	String szinputdir = "PREDICTIONSPORTIONS_UPDATED";
+	String szinputdir = Constants.PORTIONSDIR;// "PREDICTIONSPORTIONS_UPDATED";
 	//String szprefix = args[0];//"predicts";
-	int numportions = 10;
-	String szoutputdir = "COMBINED_UPDATED";
-        String szlabelfilelist = "labellist.txt";
+	int numportions = Constants.NUMPORTIONS;//10;
+	String szoutputdir = Constants.COMBINEDDIR;// "COMBINED_UPDATED";
+        String szlabelfilelist = Constants.LABELLIST;//"labellist.txt";
         String szchrom = args[0];//index = "chrorderlist.txt";
 
 	//String szname = "CNEP";

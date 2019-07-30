@@ -17,14 +17,14 @@ public class MakeCNEPAverage
 	//    throw new IllegalArgumentException("Argument length of "+args.length+" does not match expected 3");
 	//}
 
-        String szlabelfilelist = "labellist.txt";
+        String szlabelfilelist = Constants.LABELLIST;//"labellist.txt";
 	//file contains one line per directory that contains files that should be averaged
 	//files in the directory should be named scores_CHRKEY.wig or scores_CHRKEY.wig.gz 
 	String szchrom = args[0];
 	//file contains one line per directory where each line has a chromosome key 
 	//and identifier split by a tab 
-	String szinputdir = "COMBINED_UPDATED"; 
-	String szoutputdir = "CNEP_UPDATED";//args[2];
+	String szinputdir = Constants.COMBINEDDIR;//"COMBINED_UPDATED"; 
+	String szoutputdir = Constants.OUTPUTDIR;//"CNEP_UPDATED";//args[2];
 
         File dir = new File(szoutputdir);
         if (!dir.exists())

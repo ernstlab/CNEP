@@ -28,11 +28,10 @@ public class MakeCNEPPredict
 	int numportions = Integer.parseInt(args[9]);
 	*/
 
-	String szmodeldir = "MODELS_UPDATED";//args[0];//"MODELS/l1_modelFiles1_GERP_chr10";
-	//String szmodelfilelist = "modelschr10.txt";//"modelfilelist.txt";
-	String szinputbeddir = "ALLINPUTBEDS";
-	String szfeaturelist = "featurelist_allinputbeds.txt";
-	String szoutputdir = "PREDICTIONSPORTIONS_UPDATED";
+	String szmodeldir = Constants.MODELDIR;//"MODELS_UPDATED";//args[0];//"MODELS/l1_modelFiles1_GERP_chr10";
+	String szinputbeddir = Constants.INPUTBEDDIR;//"ALLINPUTBEDS";
+	String szfeaturelist = Constants.FEATUREFILELIST;//"featurelist_allinputbeds.txt";
+	String szoutputdir = Constants.PORTIONSDIR;//PREDICTIONSPORTIONS_UPDATED";
 	String szlabel = args[0];
 	//String szoutprefix = args[1];//"predicts_PhastCons";
 
@@ -45,11 +44,11 @@ public class MakeCNEPPredict
 	    }
 	}
 
-	String szchromfile = "hg19.chrom.sizes";
+	String szchromfile = Constants.CHROMSIZES;//"hg19.chrom.sizes";
 	String szchrom = args[1];//"chr10";
 	int nportion = Integer.parseInt(args[2]);//1;
-	int numportions = 10;//DEFAULT_NUMPORTIONS;
-	int nummodels = 10;
+	int numportions = Constants.NUMPORTIONS;//10;//DEFAULT_NUMPORTIONS;
+	int nummodels = Constants.NUMENSEMBLES;//10;
 
 	if ((nportion < 0)||(nportion >= numportions))
 	{

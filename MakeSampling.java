@@ -8,11 +8,11 @@ public class MakeSampling
     public static void main(String[] args) throws IOException
     {
 
-	int numbatches = 10; //Integer.parseInt(args[0]);
-	int numsamples = 1000000;
-	String szchromindex = "chrorderlist.txt";
-	String szchromsizes = "hg19.chrom.sizes";
-	String szoutputdir = "SAMPLING_UPDATED";//args[1];
+	int numbatches = Constants.NUMENSEMBLES; //10
+	int numsamples = Constants.NUMSAMPLES; //1000000
+	String szchromindex = Constants.CHROMORDERFILE;//"chrorderlist.txt";
+	String szchromsizes = Constants.CHROMSIZES;// "hg19.chrom.sizes";
+	String szoutputdir = Constants.SAMPLEDIR;//args[1];
 
         File dir = new File(szoutputdir);
         if (!dir.exists())

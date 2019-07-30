@@ -9,16 +9,16 @@ public class MakeTrainFiles
     public static void main(String[] args) throws IOException
     {
 
-        String szinputbeddir = "ALLINPUTBEDS";
+        String szinputbeddir = Constants.INPUTBEDDIR;//"ALLINPUTBEDS";
 
-	String szsamplesdir = "SAMPLING_UPDATED/";//"../../ogrujic/zarlab/createTrainX/sampleTrainingPositionsChr10/";
+	String szsamplesdir = Constants.SAMPLEDIR;//"SAMPLING_UPDATED/";
 	String szsamplefiles = args[0];//"sampleTrainingPositions_5m.txt.gz";
-	String szlabelfiledir = "COORDS";
-	String szlabelfilelist = "labellist.txt";
-	String szexonfile = "COORDS/exons_gencode_v19.bed.gz";
-        String szchromindex = "chrorderlist.txt";
-        String szfeaturelist = "featurelist_allinputbeds.txt";
-	String szoutputdir = "TRAINDIR_UPDATED";
+	String szlabelfiledir = Constants.LABELBEDDIR;//"COORDS";
+	String szlabelfilelist = Constants.LABELLIST;//"labellist.txt";
+	String szexonfile = Constants.EXONBEDFILE;//"COORDS/exons_gencode_v19.bed.gz";
+        String szchromindex = Constants.CHROMORDERFILE;//"chrorderlist.txt";
+        String szfeaturelist = Constants.FEATUREFILELIST;//"featurelist_allinputbeds.txt";
+	String szoutputdir = Constants.TRAINDIR;//"TRAINDIR_UPDATED";
 
         File dir = new File(szoutputdir);
         if (!dir.exists())
