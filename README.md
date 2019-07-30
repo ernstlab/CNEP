@@ -7,6 +7,9 @@ in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/publi
 Input files used to generate the predictions are available [here](https://ernst.cass.idre.ucla.edu/public/CNEP/INPUTFILES/).
 
 ## Running CNEP
+
+Running CNEP involves six steps. The first set is generating a set of sampled positions for training. The second is creating training files for calling Liblinear. The third step is calling Liblinear on each training file. The fourth step is generating predictions for portions of each chromosome. The fifth step is combining predictions from different portions of the same chromosome and label set. The sixth step is to average predictions based on different label sets. 
+
 ### Step 1 Generate Samples
 This step generates a set of sampled positions for training each of the classifiers. For each chromosome ten sets of a million positions are generated where positions from that chromosome are excluding from sampling. This should be executed by calling:
 
@@ -14,7 +17,7 @@ This step generates a set of sampled positions for training each of the classifi
 
 
 ### Step 2 Create Training Files
-This generates training files for each of the labels based on the sampled positions in samplingfile. 
+This generates training files for each of the labels based on the sampled positions in samplingfile for training Liblinear. 
 
 >java -classpath . MakeTrainFiles samplingfile
 
