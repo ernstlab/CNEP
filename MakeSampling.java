@@ -12,7 +12,7 @@ public class MakeSampling
 	int numsamples = 1000000;
 	String szchromindex = "chrorderlist.txt";
 	String szchromsizes = "hg19.chrom.sizes";
-	String szoutputdir = "SAMPLING_UPDATED_REPRODUCE";//args[1];
+	String szoutputdir = "SAMPLING_UPDATED";//args[1];
 
         File dir = new File(szoutputdir);
         if (!dir.exists())
