@@ -29,7 +29,7 @@ public class Constants
     /**
      * Directory where the label bed files are constrained elements
      */
-    static String LABELBEDDIR = "LABELSCOORDSBED";
+    static String LABELBEDDIR = "LABELSCOORDSBEDDIR";
 
     /**
      *  List of label files one per line, where each label file corresponds to a bed file in LABELBEDDIR
