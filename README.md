@@ -9,7 +9,7 @@ Input files used to generate the predictions are available [here](https://ernst.
 
 ## Running CNEP
 
-Running CNEP involves seven steps. The second set is generating a set of sampled positions for training. The third is creating training files for calling Liblinear. The fourth step is calling Liblinear on each training file. The fifth step is generating predictions for portions of each chromosome. The sixth step is combining predictions from different portions of the same chromosome and label set. The seventh step is to average predictions based on different label sets. 
+Running CNEP involves seven steps. The first step is preparing the input files. The second set is generating a set of sampled positions for training. The third is creating training files for calling Liblinear. The fourth step is calling Liblinear on each training file. The fifth step is generating predictions for portions of each chromosome. The sixth step is combining predictions from different portions of the same chromosome and label set. The seventh step is to average predictions based on different label sets. 
 
 ### Step 1: Prepare Input Files
 
@@ -67,9 +67,9 @@ This should be called for each sampling file. There are 10 sampling files for ea
 ### Step 4: Train Classifers
 
 First obtain Liblinear, which can be downloaded from here https://www.csie.ntu.edu.tw/~cjlin/liblinear/.
-Also gunzip must be available.
+Also gunzip must be available. Create the directory MODELSDIR.
 
-For each training file in TRAINDIRexecute these set of commands:
+For each training file in TRAINDIR created in step 3 execute these set of commands:
 >gunzip TRAINDIR/trainfile
 
 >LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
