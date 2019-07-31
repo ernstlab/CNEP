@@ -1,6 +1,5 @@
 # CNEP
-The Constrained Non-Exonic Predictor (CNEP) provides a score of evidence for a constrained 
-created and applied to the human genome using over ten thousand features defined from large-scale epigenomic and transcription factor binding data to score the evidence of each base being in a constrained non-exonic element from such data.
+The Constrained Non-Exonic Predictor (CNEP) provides a score of evidence that each base of the genome in a constrained non-exonic base from information within large-scale collections of epigenomic and transcription factor binding data. The method was applied to the human genome using over ten thousand features defined from large-scale epigenomic and transcription factor binding data.
 
 ## CNEP predictions
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/cnep.bw) or 
