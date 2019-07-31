@@ -1,5 +1,6 @@
 # CNEP
-Constrained Non-Exonic Predictor (CNEP), created and applied to the human genome using over ten thousand features defined from large-scale epigenomic and transcription factor binding data to score the evidence of each base being in a constrained non-exonic element from such data.
+The Constrained Non-Exonic Predictor (CNEP) provides a score of evidence for a constrained 
+created and applied to the human genome using over ten thousand features defined from large-scale epigenomic and transcription factor binding data to score the evidence of each base being in a constrained non-exonic element from such data.
 
 ## CNEP predictions
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/cnep.bw) or 
@@ -15,7 +16,7 @@ Running CNEP involves seven steps. The second set is generating a set of sampled
 The input files and directories are specified in Constants.java. If they need to be changed then edit Constants.java and type
 > javac -classpath . Constants.java
 
-By default
+By default these are the inputs
 
 *INPUTBEDDIR* - directory containing bed files for the input features; one bed file for input feature
 
@@ -33,7 +34,21 @@ gzipped
 
 *exons_gencode_v19.bed.gz* - bed file with exon coordinates
 
+These are by default directories with intermediate outputs
+*SAMPLEDIR* -- Directory where sample files are written
 
+*TRAINDIR* -- Directory where training files are writen
+
+*MODELSDIR* -- Directory where trained models are written
+
+*PREDICTIONSPORTIONSDIR* -- directory where predictions are written for portions of chromosomes
+
+*FULLCHROMBYLABELDIR* -- directory where full chromosome predictions are written for single label sets
+
+The directory with the final CNEP predictions in wig format is *CNEPDIR*
+
+Additionally the defaults for thenumber of samples per classifier is 1,000,000, the number of classifers
+being ensembled is 10, and the number of portions for predictions is 10.
 
 
 ### Step 2: Generate Samples
@@ -55,13 +70,13 @@ First obtain Liblinear, which can be downloaded from here https://www.csie.ntu.e
 Also gunzip must be available.
 
 For each training file in TRAINDIRexecute these set of commands:
-gunzip TRAINDIR/trainfile
+>gunzip TRAINDIR/trainfile
 
-LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
+>LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
 
-gzip TRAINDIR/trainfile
+>gzip TRAINDIR/trainfile
 
-gzip MODELDIR/trainfile.model
+>gzip MODELDIR/trainfile.model
 
 where trainfile is the name of the training file.
 
