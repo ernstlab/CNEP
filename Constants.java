@@ -39,7 +39,7 @@ public class Constants
     /**
      * Bed file with exon coordinates
      */
-    static String EXONBEDFILE = "COORDS/exons_gencode_v19.bed.gz";
+    static String EXONBEDFILE = "exons_gencode_v19.bed.gz";
 
     //////////////////////////////////////
     //intermediate directories
