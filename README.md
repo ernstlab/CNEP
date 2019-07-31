@@ -15,7 +15,7 @@ Running CNEP involves seven steps. The first step is preparing the input files. 
 The input files and directories are specified in Constants.java. If they need to be changed then edit Constants.java and type
 > javac -classpath . Constants.java
 
-By default these are the inputs
+By default these are the inputs:
 
 *INPUTBEDDIR* - directory containing bed files for the input features; one bed file for input feature
 
@@ -33,7 +33,8 @@ gzipped
 
 *exons_gencode_v19.bed.gz* - bed file with exon coordinates
 
-These are by default directories with intermediate outputs
+These are by default directories with intermediate outputs:
+
 *SAMPLEDIR* -- Directory where sample files are written
 
 *TRAINDIR* -- Directory where training files are writen
