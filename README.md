@@ -8,29 +8,33 @@ Input files used to generate the predictions are available [here](https://ernst.
 
 ## Running CNEP
 
-Running CNEP involves six steps. The first set is generating a set of sampled positions for training. The second is creating training files for calling Liblinear. The third step is calling Liblinear on each training file. The fourth step is generating predictions for portions of each chromosome. The fifth step is combining predictions from different portions of the same chromosome and label set. The sixth step is to average predictions based on different label sets. 
+Running CNEP involves seven steps. The second set is generating a set of sampled positions for training. The third is creating training files for calling Liblinear. The fourth step is calling Liblinear on each training file. The fifth step is generating predictions for portions of each chromosome. The sixth step is combining predictions from different portions of the same chromosome and label set. The seventh step is to average predictions based on different label sets. 
 
-### Step 1 Generate Samples
+### Step 1 Prepare Input Files
+
+
+
+### Step 2 Generate Samples
 This step generates a set of sampled positions for training each of the classifiers. For each chromosome ten sets of a million positions are generated where positions from that chromosome are excluding from sampling. This should be executed by calling:
 
 >java -classpath . MakeSampling
 
 
-### Step 2 Create Training Files
+### Step 3 Create Training Files
 This generates training files for each of the labels based on the sampled positions in samplingfile for training Liblinear. 
 
->java -classpath . MakeTrainFiles samplingfile
+>java -mx14000M -classpath . MakeTrainFiles samplingfile
 
 This should be called for each sampling file. There are 10 sampling files for each chromosome.
 
-### Step 3 Train Classifers
+### Step 4 Train Classifers
 
 Classifiers should be trained with Liblinear https://www.csie.ntu.edu.tw/~cjlin/liblinear/
 
 
 
 
-### Step 4 Generate Predictions on Portions of Chromosomes
+### Step 5 Generate Predictions on Portions of Chromosomes
 This step takes the trained classifers and makes predictions for each label set in ten different subsets of each chromosome.
 This is done to allow the execution to be done using less memory and time.
 
@@ -42,13 +46,13 @@ chrN is a chromosome to predict on which should be present in labellist.txt
 
 This should be called for each combination of the ten portions, label sets, and chromosome combinations
 
-### Step 5 Combine Chromosome Predictions
+### Step 6 Combine Chromosome Predictions
 This step combines the predictions from different portions to make single wig files for each chromosome
 >java -mx8000M -classpath . CombineFiles chrN
 
 This should be called for each chromosome
 
-### Step 6 Predicitions from Different Label Sets 
+### Step 7 Predicitions from Different Label Sets 
 
 >java -mx8000M -classpath . MakeCNEPAverage chrN
 
