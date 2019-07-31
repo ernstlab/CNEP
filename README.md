@@ -17,6 +17,25 @@ The input files and directories are specified in Constants.java. If they need to
 
 By default
 
+*INPUTBEDDIR* - directory containing bed files for the input features; one bed file for input feature
+
+*featurelist_allinputbeds.txt* -- file containing the list of bed files within INPUTBEDDIR one per line
+
+*chrorderlist.txt* -- list of chromosomes to be included one per line
+
+*hg19.chrom.sizes* -- tab delimited text file with chromosome information, two columns with first chromosome and the second chromosome size
+
+*LABELSCOORDSBEDDIR* -- directory containing /bed files for constrained element sets; one .bed file for each constrained
+elements
+
+*labellist.txt* -- text file listing constrained elements one per line without .gz extension included if files are
+gzipped
+
+*exons_gencode_v19.bed.gz* - bed file with exon coordinates
+
+
+
+
 ### Step 2: Generate Samples
 This step generates a set of sampled positions for training each of the classifiers. For each chromosome ten sets of a million positions are generated where positions from that chromosome are excluding from sampling. This should be executed by calling:
 
@@ -32,29 +51,43 @@ This should be called for each sampling file. There are 10 sampling files for ea
 
 ### Step 4: Train Classifers
 
-Classifiers should be trained with Liblinear https://www.csie.ntu.edu.tw/~cjlin/liblinear/
+First obtain Liblinear, which can be downloaded from here https://www.csie.ntu.edu.tw/~cjlin/liblinear/.
+Also gunzip must be available.
 
+For each training file in TRAINDIRexecute these set of commands:
+gunzip TRAINDIR/trainfile
+
+LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
+
+gzip TRAINDIR/trainfile
+
+gzip MODELDIR/trainfile.model
+
+where trainfile is the name of the training file.
 
 ### Step 5: Generate Predictions on Portions of Chromosomes
 This step takes the trained classifers and makes predictions for each label set in ten different subsets of each chromosome.
-This is done to allow the execution to be done using less memory and time.
+Predictions are made on portions of each chromosome to allow execution to be done using less memory and time.
+This can be done with the command:
 
 >java -mx8000M -classpath . MakeCNEPPredict portion labelfile chrN
 
-portion is value between 0 to 9, when there are 10 portions per chromosome 
+where portion is value between 0 to 9, when there are 10 portions per chromosome 
 labelfile should be the name of the label file without the .gz extension if present
 chrN is a chromosome to predict on which should be present in labellist.txt
 
-This should be called for each combination of the ten portions, label sets, and chromosome combinations
+This should be called for each combination of the ten portions, label set, and chromosome.
 
 ### Step 6: Combine Chromosome Predictions
-This step combines the predictions from different portions to make single wig files for each chromosome
+This step combines the predictions from different portions to make single .wig files for each chromosome
+This can be done with the command:
+
 >java -mx8000M -classpath . CombineFiles chrN
 
-This should be called for each chromosome
+This should be called for each chromosome.
 
 ### Step 7: Predicitions from Different Label Sets 
 
 >java -mx8000M -classpath . MakeCNEPAverage chrN
 
-This should be called for each chromosome
+This should be called for each chromosome.
