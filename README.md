@@ -51,7 +51,7 @@ Additionally the defaults for thenumber of samples per classifier is 1,000,000, 
 being ensembled is 10, and the number of portions for predictions is 10.
 
 
-### Step 2: Generate Samples
+### Step 2: Generate Sampled Positions
 This step generates a set of sampled positions for training each of the classifiers. For each chromosome ten sets of a million positions are generated where positions from that chromosome are excluding from sampling. This should be executed by calling:
 
 >java -classpath . MakeSampling
@@ -101,7 +101,7 @@ This can be done with the command:
 
 This should be called for each chromosome.
 
-### Step 7: Predicitions from Different Label Sets 
+### Step 7: Average Predicitions from Different Label Sets 
 
 >java -mx8000M -classpath . MakeCNEPAverage chrN
 
