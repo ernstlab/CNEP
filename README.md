@@ -109,5 +109,5 @@ This should be called for each chromosome.
 
 
 ## Reference
-Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J
+Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J.
 Identification and characterization of constrained non-exonic bases lacking predictive epigenomic and transcription factor binding annotations. bioRxiv 722876; doi: https://doi.org/10.1101/722876 
