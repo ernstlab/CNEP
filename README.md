@@ -13,7 +13,7 @@ Running CNEP involves seven steps. The first step is preparing the input files. 
 ### Step 1: Prepare Input Files
 
 The input files and directories are specified in Constants.java. If they need to be changed then edit Constants.java and type
-> javac -classpath . Constants.java
+> javac -classpath . *.java
 
 By default these are the inputs:
 
