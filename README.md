@@ -101,7 +101,7 @@ This can be done with the command:
 
 This should be called for each chromosome.
 
-### Step 7: Average Predicitions from Different Label Sets 
+### Step 7: Average Predictions from Different Label Sets 
 
 >java -mx8000M -classpath . MakeCNEPAverage chrN
 
