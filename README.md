@@ -76,7 +76,7 @@ For each training file in TRAINDIR created in step 3 execute these set of comman
 
 >gzip TRAINDIR/trainfile
 
->gzip MODELDIR/trainfile.model
+>gzip MODELSDIR/trainfile.model
 
 where trainfile is the name of the training file.
 
