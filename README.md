@@ -25,7 +25,7 @@ By default these are the inputs:
 
 *hg19.chrom.sizes* -- tab delimited text file with chromosome information, two columns with first chromosome and the second chromosome size
 
-*LABELSCOORDSBEDDIR* -- directory containing /bed files for constrained element sets; one .bed file for each constrained
+*LABELSCOORDSBEDDIR* -- directory containing .bed files for constrained element sets; one .bed file for each constrained
 elements
 
 *labellist.txt* -- text file listing constrained elements one per line without .gz extension included if files are
