@@ -1,10 +1,14 @@
-# CNEP
-The Constrained Non-Exonic Predictor (CNEP) provides a score of evidence that each base of the genome in a constrained non-exonic base from information within large-scale collections of epigenomic and transcription factor binding data. The method was applied to the human genome using over ten thousand features defined from such data.
+# CNEP and CSS-CNEP
+The Constrained Non-Exonic Predictor (CNEP) provides a score for each base of the genome of evidence that the base is in a constrained non-exonic element from information within large-scale collections of epigenomic and transcription factor binding data. The method was applied to the human genome using over sixty thousand features defined from such data. 
 
-## CNEP predictions
+The Conservation Signature Score by CNEP (CSS-CNEP) is a score for each base of the genome of its expected CNEP based on the ConsHMM conservation state annotation and overlapping constrained element annotations of the base.
+
+## CNEP and CSS-CNEP predictions
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/cnep.bw) or 
-in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/public/CNEP/WIGFILES_BYCHROM/).
+in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/public/CNEP/CNEP_WIGFILES_BYCHROM/).
 Input files used to generate the predictions are available [here](https://ernst.cass.idre.ucla.edu/public/CNEP/INPUTFILES/).
+CSS-CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/css_cnep.bw) or
+in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/public/CNEP/CSSCNEP_WIGFILES_BYCHROM/).
 
 ## Running CNEP
 
@@ -45,9 +49,9 @@ These are by default directories with intermediate outputs:
 
 *FULLCHROMBYLABELDIR* -- directory where full chromosome predictions are written for single label sets
 
-The directory with the final CNEP predictions in wig format is *CNEPDIR*
+The directory with the final CNEP predictions in Wig format is *CNEPDIR*
 
-Additionally the defaults for thenumber of samples per classifier is 1,000,000, the number of classifers
+Additionally the defaults for the number of samples per classifier is 1,000,000, the number of classifers
 being ensembled is 10, and the number of portions for predictions is 10.
 
 
@@ -94,7 +98,7 @@ chrN is a chromosome to predict on which should be present in labellist.txt
 This should be called for each combination of the ten portions, label set, and chromosome.
 
 ### Step 6: Combine Chromosome Predictions
-This step combines the predictions from different portions to make single .wig files for each chromosome
+This step combines the predictions from different portions to make single .wig files for each chromosome.
 This can be done with the command:
 
 >java -mx8000M -classpath . CombineFiles chrN
@@ -102,11 +106,53 @@ This can be done with the command:
 This should be called for each chromosome.
 
 ### Step 7: Average Predictions from Different Label Sets 
+This step averages predictions based on training with labels from different constrained element sets.
+This can be done with the command:
 
 >java -mx8000M -classpath . MakeCNEPAverage chrN
 
 This should be called for each chromosome.
 
+## Running CSS-CNEP
+
+### Step 1: Run CNEP 
+
+Before running CSS-CNEP, CNEP should be run following the procedures above.
+
+### Step 2: Prepare the input files
+
+The input files and directories are specified in Constants.java. If they need to be changed then edit Constants.java and type
+> javac -classpath . *.java
+
+The input files should generally be the same as provided when running CNEP.
+There is one additional input file with the ConsHMM segmentation file which defaults
+to *GW_segmentation.bed.gz*
+
+There is one intermediate directory *CSSCNEP_AVERAGES* where the average CNEP value
+for different conservation signatures are written. There is a separate file based on excluding
+each chromosome but including all others.
+
+The directory with the final CNEP predictions in wig format is *CNEPDIR*
+
+There is one parameter for the number of states in the ConsHMM model which defaults to 100.
+
+### Step 3: Compute conservation signature averages
+This step computes the average CNEP value for each conservation signature, which is a combination
+of conservation state and constrained element overlaps.
+For each target chromosome, this is computed based on all input chromosomes except the target chromosome.
+
+> java -classpath . ComputeAveragesCSS_CNEP chrN
+
+This should be called for each chromosome.
+
+### Step 4: Generate CSS-CNEP scores
+This step generate the CSS-CNEP scores.
+
+This can be done with the command:
+
+> java -classpath . MakeCSS_CNEPPredict chrN
+
+This should be called for each chromosome.
 
 ## Reference
 Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J.
