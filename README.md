@@ -1,7 +1,7 @@
 # CNEP and CSS-CNEP
 The Constrained Non-Exonic Predictor (CNEP) provides a score for each base of the genome of evidence that the base is in a constrained non-exonic element from information within large-scale collections of epigenomic and transcription factor binding data. The method was applied to the human genome using over sixty thousand features defined from such data. 
 
-The Conservation Signature Score by CNEP (CSS-CNEP) is a score for each base of the genome of its expected CNEP based on the ConsHMM conservation state annotation and overlapping constrained element annotations of the base.
+The Conservation Signature Score by CNEP (CSS-CNEP) is a complementary score for each base of the genome of its expected CNEP score based on the ConsHMM conservation state annotation and overlapping constrained element annotations of the base.
 
 ## CNEP and CSS-CNEP predictions
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/cnep.bw) or 
