@@ -12,7 +12,7 @@ public class Constants
     static String INPUTBEDDIR = "INPUTBEDDIR";
 
     /**
-     * List of features one per line, where each feature corresponds to a bed file in INPUTBEDDIR
+     * List of features one per line, where each feature corresponds to a bed file in INPUTBEDDIR or subdirectory
      */
     static String FEATUREFILELIST = "featurelist_allinputbeds.txt";
 
@@ -69,6 +69,8 @@ public class Constants
      */
     static String COMBINEDDIR = "FULLCHROMBYLABELDIR";
 
+
+
     ////////////////////////////
     //final output dir
     ///////////////////////////
@@ -96,4 +98,28 @@ public class Constants
     static int NUMPORTIONS = 10;
 
 
-}
+    ////////////////////////////
+    //// CSS-CNEP specific parameters
+    ////////////////////////////
+
+    /**
+     * Intermediate directory where the combo averages are written
+     */
+    static String CSSNCEP_AVERAGEDIR = "CSSCNEP_AVERAGES";
+
+    /**
+     * Directory where the final CSS_CNEP predictions are written
+     */
+    static String CSSCNEP_OUTPUTDIR = "CSSCNEP_OUTPUTDIR2018";
+
+    /**
+     * Number of ConsHMM conservation states
+     */
+    static int NUMCONSHMM = 100;
+
+    /**
+     * File nae with the ConsHMM segments
+     */
+    static String CONSHMM_SEGMENTS = "GW_segmentation.bed.gz";
+
+}    

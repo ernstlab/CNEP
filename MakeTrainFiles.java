@@ -9,16 +9,35 @@ public class MakeTrainFiles
     public static void main(String[] args) throws IOException
     {
 
-        String szinputbeddir = Constants.INPUTBEDDIR;//"ALLINPUTBEDS";
-
 	String szsamplesdir = Constants.SAMPLEDIR;//"SAMPLING_UPDATED/";
 	String szsamplefiles = args[0];//"sampleTrainingPositions_5m.txt.gz";
+        String szinputbeddir;
+        String szfeaturelist;
+        String szoutputdir;
+
+	if (args.length == 4)
+	{
+	   szinputbeddir = args[1];//Constants.INPUTBEDDIR;//"ALLINPUTBEDS";
+	   szfeaturelist = args[2];//Constants.FEATUREFILELIST;//"featurelist_allinputbeds.txt";
+	   szoutputdir = args[3];//Constants.TRAINDIR;//"TRAINDIR_UPDATED";
+	}
+	else if (args.length == 1)
+	{
+           szinputbeddir = Constants.INPUTBEDDIR;//"ALLINPUTBEDS";
+           szfeaturelist = Constants.FEATUREFILELIST;//"featurelist_allinputbeds.txt";
+           szoutputdir = Constants.TRAINDIR;//"TRAINDIR_UPDATED";
+	}
+	else
+        {
+	   throw new IllegalArgumentException("expecting either 1 or 4 parameters to MakeTrainFiles received "+args.length+" parameters");
+	}
+
 	String szlabelfiledir = Constants.LABELBEDDIR;//"COORDS";
 	String szlabelfilelist = Constants.LABELLIST;//"labellist.txt";
 	String szexonfile = Constants.EXONBEDFILE;//"COORDS/exons_gencode_v19.bed.gz";
         String szchromindex = Constants.CHROMORDERFILE;//"chrorderlist.txt";
-        String szfeaturelist = Constants.FEATUREFILELIST;//"featurelist_allinputbeds.txt";
-	String szoutputdir = Constants.TRAINDIR;//"TRAINDIR_UPDATED";
+
+
 
         File dir = new File(szoutputdir);
         if (!dir.exists())
