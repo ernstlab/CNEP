@@ -64,16 +64,34 @@ This step generates a set of sampled positions for training each of the classifi
 ### Step 3: Create Training Files
 This generates training files for each of the constrained element sets based on the sampled positions in samplingfile for training Liblinear. 
 
+There are two options for creating training files. Option A creates one set of training files for all the features.
+Option B creates training files based on subsets of features that are merged in step 4 Option B. Option A is simpler,
+but Option B better scales to large number of features as they can be split into subsets of features and processed in parallel.
+
+Option A
+
 >java -mx14000M -classpath . MakeTrainFiles samplingfile
 
 This should be called for each sampling file. There are 10 sampling files for each chromosome.
 
+Option B
+
+>java -mx14000M -classpath . MakeTrainFiles samplingfile INPUTBEDDIR_SUBSET featurelist_subset.txt TRAINDIR_SUBSET
+
+This should be called for each sampling file and feature subset. *INPUTBEDDIR_SUBSET* is a directory where the bed files are for the subset of features. *featurelist_subset.txt* is a file which lists the file names of features, one per line, that are part of the subset and also in INPUTBEDDIR_SUBSET. *TRAINDIR_SUBSET* is the name of the directory where training data for the subset of features should be written. Each feature subset should have a different output directory since files of the same name are written to each directory.
+
+
 ### Step 4: Train Classifers
 
 First obtain Liblinear, which can be downloaded from here https://www.csie.ntu.edu.tw/~cjlin/liblinear/.
-Also gunzip must be available. Create the directory MODELSDIR.
+Also gunzip must be available. Next create the directory MODELSDIR.
 
-For each training file in TRAINDIR created in step 3 execute these set of commands:
+There are also two options for this step. If Option A was used in Step 3, then option A should be used in this step.
+If Option B was used in Step 3, then option B should be used in this step.
+
+Option A
+
+For each training file in TRAINDIR_SUBSET directories created in step 3 option A execute these set of commands:
 >gunzip TRAINDIR/trainfile
 
 >LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
@@ -83,6 +101,29 @@ For each training file in TRAINDIR created in step 3 execute these set of comman
 >gzip MODELSDIR/trainfile.model
 
 where trainfile is the name of the training file.
+
+Option B
+
+For each training file name in the TRAINDIR_SUBSET created in step 3 option B, trainfile, execute these set of commands:
+
+> java -classpath . MergeTrainFiles trainfile traindirfeatures.txt TRAINDIR_MERGED
+
+> gunzip TRAINDIR_MERGED/trainfile
+
+> LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR_MERGED/trainfile MODELSDIR/trainfile.model
+
+> rm TRAINDIR_MERGED/trainfile
+
+> gzip MODELSDIR/trainfile.model
+
+where
+*traindirfeatures.txt* - is a tab delimited text file with each line corresponding to a feature subset. The first column contains the directory TRAINDIR_SUBSET for the feature subset from Step 3 option B. The second column contains the featurelist_subset.txt file name for the feature subset from Step 3 option B.
+
+*TRAINDIR_MERGED* is the name of the directory where the merged training data feature files should be written and should be different
+than the train directory for any of the subsets
+
+*MODELSDIR* is the name of the directory where the models should be written
+
 
 ### Step 5: Generate Predictions on Portions of Chromosomes
 This step takes the trained classifers and makes predictions for each label set in ten different subsets of each chromosome.
