@@ -67,8 +67,8 @@ public class MakeCSS_CNEPPredict
 	    StringTokenizer st = new StringTokenizer(szLine,"\t");
 	    int ncombo = Integer.parseInt(st.nextToken());
 	    String szval = st.nextToken();
-	    int ncount = Integer.parseInt(st.nextToken());
-	    if (ncount > 0)
+	    double dcount = Double.parseDouble(st.nextToken());
+	    if (dcount > 0)
 	    {
 	       mapping[ncombo] = Double.parseDouble(szval)/1000;
 	    }
