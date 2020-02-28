@@ -8,12 +8,13 @@ public class MergeTrainFiles
     public static void main(String[] args) throws IOException
     {
 
-	String szprefixchrom = "train_samples_"+args[0];
-	int nbatch = Integer.parseInt(args[1]);
+	//String szprefixchrom = "train_samples_"+args[0];
+	//int nbatch = Integer.parseInt(args[1]);
 	//String szelset = args[2];
-        String szelset = "gz_"+args[2]+".gz.txt";
-	String szfeaturelistdir = args[3];
-	String szoutputdir = args[4];
+        //String szelset = "gz_"+args[2]+".gz.txt";
+	String sztrainfile = args[0];
+	String szfeaturelistdir = args[1];
+	String szoutputdir = args[2];
 
         File dir = new File(szoutputdir);
         if (!dir.exists())
@@ -57,7 +58,7 @@ public class MergeTrainFiles
 	BufferedReader[] brA = new BufferedReader[traindir.length];
 	for (int ndir = 0; ndir < brA.length; ndir++)
 	{
-	    brA[ndir] = Util.getBufferedReader(traindir[ndir]+"/"+szprefixchrom+"_"+nbatch+"."+szelset+".gz");
+	    brA[ndir] = Util.getBufferedReader(traindir[ndir]+"/"+sztrainfile);//szprefixchrom+"_"+nbatch+"."+szelset+".gz");
 	}
 
 	//String szLine;
@@ -74,8 +75,7 @@ public class MergeTrainFiles
 	    brfeature.close();
 	}
 
-	System.out.println("creating "+szoutputdir+"/"+szprefixchrom+"_"+nbatch+"."+szelset+".gz");
-	GZIPOutputStream pw = new GZIPOutputStream(new FileOutputStream(szoutputdir+"/"+szprefixchrom+"_"+nbatch+"."+szelset+".gz"));
+	GZIPOutputStream pw = new GZIPOutputStream(new FileOutputStream(szoutputdir+"/"+sztrainfile));//szprefixchrom+"_"+nbatch+"."+szelset+".gz"));
 
 	int noffset = 0;
 	while ((szLine = brA[0].readLine())!=null)
