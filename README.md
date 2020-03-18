@@ -130,7 +130,7 @@ This step takes the trained classifers and makes predictions for each label set 
 Predictions are made on portions of each chromosome to allow execution to be done using less memory and time.
 This can be done with the command:
 
->java -mx8000M -classpath . MakeCNEPPredict portion labelfile chrN
+>java -mx8000M -classpath . MakeCNEPPredict labelfile chrN portion
 
 where portion is value between 0 to 9, when there are 10 portions per chromosome 
 labelfile should be the name of the label file without the .gz extension if present
