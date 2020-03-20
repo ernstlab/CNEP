@@ -41,6 +41,13 @@ public class Constants
      */
     static String EXONBEDFILE = "exons_gencode_v19.bed.gz";
 
+
+    /**
+     * File  The first column contains the directory TRAINDIR_SUBSET for the feature subset.
+     * The second column contains the featurelist_subset.txt file name for the feature subset.
+     */
+    static String TRAINDIRFEATURES = "traindirfeatures.txt";
+
     //////////////////////////////////////
     //intermediate directories
     /////////////////////////////////////

@@ -13,8 +13,8 @@ public class MergeTrainFiles
 	//String szelset = args[2];
         //String szelset = "gz_"+args[2]+".gz.txt";
 	String sztrainfile = args[0];
-	String szfeaturelistdir = args[1];
-	String szoutputdir = args[2];
+	String szfeaturelistdir = Constants.TRAINDIRFEATURES;//args[1];
+	String szoutputdir = args[1];
 
         File dir = new File(szoutputdir);
         if (!dir.exists())
