@@ -37,6 +37,9 @@ gzipped
 
 *exons_gencode_v19.bed.gz* - bed file with exon coordinates
 
+*traindirfeatures.txt* - this file is only relevant if splitting training data across multiple directories (see option B below).
+It a tab delimited text file with each line corresponding to a feature subset. The first column contains the directory TRAINDIR_SUBSET for the feature subset from Step 3 option B. The second column contains the featurelist_subset.txt file name for the feature subset from Step 3 option B. The third column contains the corresponding INPUTBEDDIR_SUBSET sub-directory of INPUTBEDDIR where the files are from Step 3 option B.
+ 
 These are by default directories with intermediate outputs:
 
 *SAMPLEDIR* -- Directory where sample files are written
@@ -78,7 +81,7 @@ Option B
 
 >java -mx14000M -classpath . MakeTrainFiles samplingfile INPUTBEDDIR_SUBSET featurelist_subset.txt TRAINDIR_SUBSET
 
-This should be called for each sampling file and feature subset. *INPUTBEDDIR_SUBSET* is a directory where the bed files are for the subset of features. *featurelist_subset.txt* is a file which lists the file names of features, one per line, that are part of the subset and also in INPUTBEDDIR_SUBSET. *TRAINDIR_SUBSET* is the name of the directory where training data for the subset of features should be written. Each feature subset should have a different output directory since files of the same name are written to each directory.
+This should be called for each sampling file and feature subset. *INPUTBEDDIR_SUBSET* is a directory within INPUTBEDDIR where the bed files are for the subset of features. *featurelist_subset.txt* is a file which lists the file names of features, one per line, that are part of the subset and also in INPUTBEDDIR_SUBSET. *TRAINDIR_SUBSET* is the name of the directory where training data for the subset of features should be written. Each feature subset should have a different output directory since files of the same name are written to each directory.
 
 
 ### Step 4: Train Classifers
@@ -104,9 +107,13 @@ where trainfile is the name of the training file.
 
 Option B
 
-For each training file name in the TRAINDIR_SUBSET created in step 3 option B, trainfile, execute these set of commands:
+Execute the command
 
-> java -classpath . MergeTrainFiles trainfile traindirfeatures.txt TRAINDIR_MERGED
+> java -classpath . MergeFeatureFiles
+
+Also, for each training file name in the TRAINDIR_SUBSET created in step 3 option B, trainfile, execute these set of commands:
+
+> java -classpath . MergeTrainFiles trainfile TRAINDIR_MERGED
 
 > gunzip TRAINDIR_MERGED/trainfile
 
@@ -116,9 +123,7 @@ For each training file name in the TRAINDIR_SUBSET created in step 3 option B, t
 
 > gzip MODELSDIR/trainfile.model
 
-where
-*traindirfeatures.txt* - is a tab delimited text file with each line corresponding to a feature subset. The first column contains the directory TRAINDIR_SUBSET for the feature subset from Step 3 option B. The second column contains the featurelist_subset.txt file name for the feature subset from Step 3 option B.
-
+where 
 *TRAINDIR_MERGED* is the name of the directory where the merged training data feature files should be written and should be different
 than the train directory for any of the subsets
 
