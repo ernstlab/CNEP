@@ -43,8 +43,9 @@ public class Constants
 
 
     /**
-     * File  The first column contains the directory TRAINDIR_SUBSET for the feature subset.
+     * The first column contains the directory TRAINDIR_SUBSET for the feature subset.
      * The second column contains the featurelist_subset.txt file name for the feature subset.
+     * The third column contains the subdirectory within INPUTBEDDIR containing the bed files for the feature subset.
      */
     static String TRAINDIRFEATURES = "traindirfeatures.txt";
 
