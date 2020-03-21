@@ -30,7 +30,7 @@ public class MakeSampling
 	{
 	   if (!modeldir.mkdirs())
 	   {
-	      throw new IllegalArgumentException(szoutputdir+" does not exist and could not be created!");
+	      throw new IllegalArgumentException(szmodeldir+" does not exist and could not be created!");
 	   }
 	}
 
