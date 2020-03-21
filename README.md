@@ -94,10 +94,7 @@ If Option B was used in Step 3, then option B should be used in this step.
 
 Option A
 
-Execute the command
-> mkdir MODELSDIR
-
-Also, for each training file in TRAINDIR_SUBSET directories created in step 3 option A execute these set of commands:
+For each training file in TRAINDIR_SUBSET directories created in step 3 option A, execute these set of commands:
 >gunzip TRAINDIR/trainfile
 
 >LIBLINEAR/liblinear-2.1/train -s 6 -B 1 -c 1 TRAINDIR/trainfile MODELSDIR/trainfile.model
@@ -110,8 +107,7 @@ where trainfile is the name of the training file.
 
 Option B
 
-Execute the commands
-> mkdir MODELSDIR
+Execute the command
 
 > java -classpath . MergeFeatureFiles
 
