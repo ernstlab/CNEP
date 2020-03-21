@@ -23,6 +23,16 @@ public class MakeSampling
 	   }
 	}
 
+        String szmodeldir = Constants.MODELDIR;
+
+        File modeldir = new File(szmodeldir);
+        if (!modeldir.exists())
+	{
+	   if (!modeldir.mkdirs())
+	   {
+	      throw new IllegalArgumentException(szoutputdir+" does not exist and could not be created!");
+	   }
+	}
 
 	/*
 	int nbatch = Integer.parseInt(args[0]);
