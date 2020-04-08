@@ -21,7 +21,7 @@ The input files and directories are specified in Constants.java. If they need to
 
 By default these are the inputs:
 
-*INPUTBEDDIR* - directory containing bed files for the input features; one bed file for input feature
+*INPUTBEDDIR* - directory containing bed files for the input features or subdirectories containing them; one bed file for input feature
 
 *featurelist_allinputbeds.txt* -- file containing the list of bed files within INPUTBEDDIR one per line
 
