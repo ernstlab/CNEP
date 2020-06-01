@@ -4,11 +4,11 @@ The Constrained Non-Exonic Predictor (CNEP) provides a score for each base of th
 The Conservation Signature Score by CNEP (CSS-CNEP) is a complementary score for each base of the genome of its expected CNEP score based on the ConsHMM conservation state annotation and overlapping constrained element annotations of the base.
 
 ## CNEP and CSS-CNEP predictions
-CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/cnep.bw) or 
-in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/public/CNEP/CNEP_WIGFILES_BYCHROM/).
-Input files used to generate the predictions are available [here](https://ernst.cass.idre.ucla.edu/public/CNEP/INPUTFILES/).
-CSS-CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://ernst.cass.idre.ucla.edu/public/CNEP/css_cnep.bw) or
-in Wig format (.wig) by chromosome [here](https://ernst.cass.idre.ucla.edu/public/CNEP/CSSCNEP_WIGFILES_BYCHROM/).
+CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/cnep.bw) or 
+in Wig format (.wig) by chromosome [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/CNEP_WIGFILES_BYCHROM/).
+Input files used to generate the predictions are available [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/INPUTFILES/).
+CSS-CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/css_cnep.bw) or
+in Wig format (.wig) by chromosome [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/CSSCNEP_WIGFILES_BYCHROM/).
 
 ## Running CNEP
 
