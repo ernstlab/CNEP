@@ -3,6 +3,8 @@ The Constrained Non-Exonic Predictor (CNEP) provides a score for each base of th
 
 The Conservation Signature Score by CNEP (CSS-CNEP) is a complementary score for each base of the genome of its expected CNEP score based on the ConsHMM conservation state annotation and overlapping constrained element annotations of the base.
 
+Additionally there is a utility GetOverlapCoord to obtain a ranked list of features overlapping a given coordinate where the features are ranked by their expected score statistics.
+
 ## CNEP and CSS-CNEP predictions
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/cnep.bw) or 
 in Wig format (.wig) by chromosome [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/CNEP_WIGFILES_BYCHROM/).
@@ -199,6 +201,9 @@ This can be done with the command:
 > java -classpath . MakeCSS_CNEPPredict chrN
 
 This should be called for each chromosome.
+
+## GetOverlapCoord
+
 
 ## Reference
 Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J.
