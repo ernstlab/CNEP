@@ -87,6 +87,13 @@ public class Constants
     */
     static String OUTPUTDIR = "CNEPDIR";
 
+
+    /**
+     * Feature Conservation
+     */
+    static String EXPECTCNEPFILE = "features_conservation.txt";
+
+
     /////////////////////////////
     //Numerical parameters
     /////////////////////////////
