@@ -204,6 +204,38 @@ This should be called for each chromosome.
 
 ## GetOverlapCoord
 
+### Step 1: Generates a Feature Conservation List
+
+This step generates an ordered list of features based on their expected
+CNEP score statistics.
+
+This step only needs to only be run one time, not for each coordinate. 
+Additionally if using the same set of features as in the CNEP manuscript
+it does not need to be run and instead the file features_conservation.txt
+can be used.
+
+Optionally, if the file name for the feature conservation needs to be changed modify
+EXPECTCNEPFILE = "features_conservation.txt" in Constants.java and then type
+> javac -classpath . *.java
+
+To run MakeFeatureConservationList type the command
+
+> java -classpath . MakeFeatureConservationList
+
+### Step 2: Run GetOverlapCoord
+
+This step prints to the terminal, or a file if the terminal output is redirected,
+the set of features overlapping a given coordinate. The coordinate is specified
+by a chromosome including the chr prefix and an integer for a coordinate position. 
+The features are scanned and displayed from those features that have the highest
+expected CNEP score statistic, meaning the feature is associated with a high level
+of non-exonic constraint, to the ones with the lowest CNEP score staistics.
+
+> java -classpath . GetOverlapCoord chrom position
+
+The output includes the rank of the feature among those found intersecting the coordinate, 
+the identity of the feature, its expected CNEP score statistic, and the features rank among all features, 
+where rank is based on the expected CNEP score statistic.
 
 ## Reference
 Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J.
