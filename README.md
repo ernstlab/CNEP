@@ -239,4 +239,4 @@ where rank is based on the expected CNEP score statistic.
 
 ## Reference
 Grujic O, Phung TN, Kwon SB, Arneson A, Lee Y, Lohmueller KE, Ernst J.
-Identification and characterization of constrained non-exonic bases lacking predictive epigenomic and transcription factor binding annotations. bioRxiv 722876; doi: https://doi.org/10.1101/722876 
+Identification and characterization of constrained non-exonic bases lacking predictive epigenomic and transcription factor binding annotations. Nat Commun 11, 6168 (2020); doi: https://doi.org/10.1101/722876 
