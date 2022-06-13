@@ -9,8 +9,11 @@ Additionally there is a utility GetOverlapCoord to obtain a ranked list of featu
 CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/cnep.bw) or 
 in Wig format (.wig) by chromosome [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/CNEP_WIGFILES_BYCHROM/).
 Input files used to generate the predictions are available [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/INPUTFILES/).
+LiftOver of CNEP predictions in hg38 is available [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/cnep_hg38lift_filter.bw). Bases that were not mapped to uniquely by LiftOver or mapped to a chromosome other than chr1-22 or chrX were filtered.
+
 CSS-CNEP predictions for the human genome (hg19) is available in BigWig format (.bw) [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/css_cnep.bw) or
 in Wig format (.wig) by chromosome [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/CSSCNEP_WIGFILES_BYCHROM/).
+LiftOver of CSS-CNEP predictions in hg38 is available [here](https://public.hoffman2.idre.ucla.edu/ernst/ZHYRB/CNEP/css_cnep_hg38lift_filter.bw). Bases that were not mapped to uniquely by LiftOver or mapped to a chromosome other than chr1-22 or chrX were filtered.
 
 ## Running CNEP
 
